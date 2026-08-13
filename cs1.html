@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -157,3 +158,164 @@
   </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Blue Prism — Case study — Filip Malinowski</title>
+  <meta name="description" content="Case study: skalowalny robot Blue Prism do ekstrakcji i raportowania danych rynkowych.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">f(m);</a>
+    <nav class="nav" aria-label="Główne">
+      <a href="index.html#o-mnie">O mnie</a>
+      <a href="index.html#sciezka">Ścieżka</a>
+      <a href="index.html#umiejetnosci">Umiejętności</a>
+      <a href="case-studies.html" aria-current="page">Case studies</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main class="page-main cs-detail">
+    <div class="section cs-detail-top">
+      <a class="cs-back" href="case-studies.html">← Wszystkie case studies</a>
+    </div>
+
+    <div class="section cs-layout">
+      <aside class="cs-toc" aria-label="Spis treści">
+        <p class="cs-toc-label">Spis treści</p>
+        <ol class="cs-toc-nav">
+          <li><a href="#cs1-cel">Cel projektu</a></li>
+          <li><a href="#cs1-architektura">Architektura</a></li>
+          <li><a href="#cs1-ekstrakcja">Ekstrakcja danych</a></li>
+          <li><a href="#cs1-self-healing">Self-Healing</a></li>
+          <li><a href="#cs1-raport">Raportowanie</a></li>
+        </ol>
+      </aside>
+
+      <article class="cs-article" id="cs1">
+        <p class="case-tag">Blue Prism · RPA</p>
+        <div class="cs-article-header">
+          <h1>Skalowalny robot do ekstrakcji i raportowania danych rynkowych (Blue Prism)</h1>
+          <figure class="cs-hero-image">
+            <img src="assets/Case_studies/cs1/worldometers-fb.jpg" alt="Worldometers — źródło danych projektu" width="400" height="400">
+          </figure>
+        </div>
+
+        <div class="cs-content-row">
+          <div class="cs-body">
+            <section id="cs1-cel">
+              <h2>Cel projektu</h2>
+              <p>
+                Wykonany projekt to pełnowartościowy Proof of Concept symulujący automatyzację
+                powtarzalnych procesów badawczych i analitycznych w środowisku korporacyjnym.
+                Głównym celem robota jest całkowita eliminacja manualnego wyszukiwania
+                i cyklicznego raportowania danych demograficznych oraz populacyjnych
+                z portalu Worldometer dla zmiennej listy państw. Dzięki przeniesieniu
+                tego obowiązku na cyfrowe narzędzie proces przygotowywania zestawień staje się
+                w stu procentach powtarzalny i wolny od błędów ludzkich, a wyekstraktowane
+                informacje trafiają do standardowego arkusza kalkulacyjnego w formacie
+                natychmiast gotowym do dalszych analiz biznesowych.
+              </p>
+            </section>
+
+            <section id="cs1-architektura">
+              <h2>Architektura</h2>
+              <p>
+                Architektura rozwiązania została zaprojektowana w środowisku Blue Prism.
+                Zamiast standardowego, powolnego otwierania arkusza Excel przez interfejs
+                graficzny robot wykorzystuje bezpośrednie połączenie bazodanowe OLE DB.
+                Na etapie inicjalizacji system w tle odczytuje wejściową listę państw
+                i umieszcza je w transakcyjnej kolejce zadań Work Queue. Główna pętla procesu
+                pobiera kolejne pozycje sekwencyjnie za pomocą akcji Get Next Item, co nie tylko
+                gwarantuje pełną skalowalność i śledzenie statusu każdego elementu,
+                ale również umożliwia bezproblemowe wznowienie pracy w przypadku awarii.
+              </p>
+            </section>
+
+            <section id="cs1-ekstrakcja">
+              <h2>Ekstrakcja danych</h2>
+              <p>
+                Kluczowym aspektem projektu jest wysoka odporność na zmiany w interfejsie
+                aplikacji webowych oraz zaawansowana logika samoczynnej naprawy błędów.
+                Do lokalizacji danych w tabeli robot nie używa sztywnych współrzędnych
+                ani prostego wyszukiwania tekstu, lecz dynamicznie budowanych selektorów XPath
+                w formacie <code>//tr[@id='nazwa_panstwa']/td[x]</code>, do których na bieżąco
+                wstrzykiwana jest zmienna pobrana z kolejki. Wykorzystanie unikalnych
+                identyfikatorów wierszy gwarantuje bezbłędne namierzanie elementów nawet
+                przy zmianach layoutu strony. Po załadowaniu witryny i weryfikacji struktury DOM
+                blokiem Wait Stage system ekstraktuje pięć strategicznych wskaźników
+                populacyjnych, w tym roczną zmianę procentową, gęstość zaludnienia
+                oraz udział w populacji globalnej.
+              </p>
+            </section>
+
+            <section id="cs1-self-healing">
+              <h2>Self-Healing</h2>
+              <p>
+                W celu zapewnienia ciągłości działania proces wyposażono w mechanizm Self-Healing
+                zaimplementowany poprzez strukturę Retry Loop z limitem trzech prób odczytu.
+                W sytuacji wystąpienia losowych opóźnień sieciowych lub błędu komunikacji
+                ze stroną aktywuje się ścieżka awaryjna z blokiem Item Recover. Robot
+                automatycznie przywraca i aktywuje okno przeglądarki, po czym wznawia główny
+                nurt przetwarzania. Jeśli po wyczerpaniu limitu prób odczyt nadal jest niemożliwy,
+                system nie przerywa działania całego programu. Problemowy element jest oznaczany
+                jako wyjątek systemowy lub biznesowy w kolejce, a robot płynnie przechodzi
+                do przetwarzania kolejnego państwa z listy.
+              </p>
+            </section>
+
+            <section id="cs1-raport">
+              <h2>Raportowanie</h2>
+              <p>
+                Faza końcowa następuje po przetworzeniu wszystkich pozycji z kolejki zadań.
+                Wyekstraktowana kolekcja danych jest generowana do sformatowanego pliku MS Excel
+                na bazie zoptymalizowanego szablonu binarnego. Rozwiązanie automatycznie dba
+                o higienę prezentacji wyników, dopasowując szerokość kolumn i nakładając
+                właściwe formatowanie dla wartości liczbowych oraz wskaźników procentowych.
+                Zwieńczeniem pracy jest procedura Clean-up, podczas której robot bezpiecznie
+                zamyka sesję przeglądarki Google Chrome w tle i zapisuje gotowy raport
+                w wyznaczonej lokalizacji.
+              </p>
+            </section>
+          </div>
+
+          <figure class="cs-diagram">
+            <img src="assets/Case_studies/cs1/diagram.png" alt="Diagram procesu robota Blue Prism" width="480" height="900">
+          </figure>
+        </div>
+
+        <figure class="cs-result">
+          <figcaption>Wynik — przykładowy raport MS Excel</figcaption>
+          <img src="assets/Case_studies/cs1/result.png" alt="Przykładowy wynik eksportu do MS Excel" width="1200" height="700">
+        </figure>
+
+        <div class="cs-cta">
+          <p class="eyebrow">Kontakt</p>
+          <h2>Chcesz omówić podobny projekt?</h2>
+          <p>Napisz — chętnie opowiem o szczegółach realizacji i możliwościach współpracy.</p>
+          <a class="btn btn-primary" href="index.html#kontakt">Przejdź do kontaktu</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Filip Malinowski</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+>>>>>>> 234bb90a1bbd57522da393de5057ad43c62b97d8
